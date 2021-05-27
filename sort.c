@@ -17,9 +17,8 @@ main() {
 
   i=0;
   while ( fgets (str[i], 200, fp) != NULL) {
-
-    sscanf(str[i], "%d.%d.%d (%d) %d:%d:%d %d %f %f %f --- --- %f %f %f %f %f\n", 
-      &yy[i], &mm[i], &dd[i], &ddd[i], &hh[i], &mn[i], &sc[i], &cscore[i], 
+    sscanf(str[i], "%d.%d.%d (%d) %d:%d:%d %d %f %f %f --- --- %f %f %f %f %f\n",
+      &yy[i], &mm[i], &dd[i], &ddd[i], &hh[i], &mn[i], &sc[i], &cscore[i],
       &fof2[i], &fof1[i], &foe[i], &hmf2[i], &hmf1[i], &hme[i], &b0[i], &b1[i], &d1[i]);
     i++;
   }
@@ -35,9 +34,12 @@ main() {
 // Median Filter
 
   medfilter(fof2, imax);
-  for (i=0; i<imax; i++) { printf ("%5.3f ", fof2[i]); } printf ("\n");
+  printf("Median Filter, foF2: ");
+  for (i=0; i<imax; i++) { printf ("%5.3f\n", fof2[i]); } printf ("\n");
+
   medfilter(hmf2, imax);
-  for (i=0; i<imax; i++) { printf ("%7.3f ", hmf2[i]); } printf ("\n");
+  printf("Median Filter, hmf2: ");
+  for (i=0; i<imax; i++) { printf ("%5.3f\n", hmf2[i]); } printf ("\n");
 
   fclose (fp);
 }
