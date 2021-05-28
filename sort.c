@@ -21,12 +21,6 @@ main() {
   char str[NMAX], header[NMAX];
   double f_fof2[LMAX], f_hmf2[LMAX];
 
-/*  char date[LMAX][NMAX], ddd[LMAX][NMAX], time[LMAX][NMAX], cscore[LMAX][NMAX];
-  char fof1[LMAX][NMAX], foe[LMAX][NMAX], foes[LMAX][NMAX], hes[LMAX][NMAX], hmf1[LMAX][NMAX], hme[LMAX][NMAX], b0[LMAX][NMAX], b1[LMAX][NMAX], d1[LMAX][NMAX];
-  float fof2[LMAX], hmf2[LMAX];
-  char str[LMAX][NMAX], header[NMAX];
-*/
-
   FILE *fp;
   fp = fopen("data.tab", "r");
 
