@@ -21,11 +21,8 @@ main() {
   char str[NMAX], header[NMAX];
   double f_fof2[LMAX], f_hmf2[LMAX];
 
-  FILE *fp;
-  fp = fopen("data.tab", "r");
-
   i=0;
-  while ( fgets (str, NMAX, fp) != NULL) {
+  while ( fgets (str, NMAX, stdin) != NULL) {
     if (str[0] == '#') { strcpy(header, str); }
     else {
       sscanf(str, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s",
@@ -65,8 +62,7 @@ main() {
   medfilter(f_hmf2, imax);
   printf("Median Filter, hmf2: \n");
   for (i=0; i<imax; i++) { printf ("%5.3f\n", f_hmf2[i]); } printf ("\n");
-
-  fclose (fp);
+  
 }
 
 void medfilter(double v[], int n) {
