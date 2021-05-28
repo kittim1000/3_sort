@@ -31,9 +31,6 @@ main() {
       sscanf(str, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s",
         tmp.date, tmp.ddd, tmp.time, tmp.cscore,
         tmp.fof2, tmp.fof1, tmp.foe, tmp.foes, tmp.hes, tmp.hmf2, tmp.hmf1, tmp.hme, tmp.b0, tmp.b1, tmp.d1);
-//        date[i], ddd[i], time[i], cscore[i],
-//        &fof2[i], fof1[i], foe[i], foes[i], hes[i], &hmf2[i], hmf1[i], hme[i], b0[i], b1[i], d1[i]);
-
       line[i] = tmp;
       i++;
     }
