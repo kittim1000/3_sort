@@ -69,17 +69,10 @@ void main() {
 
 int compare_raws(struct raws *s, struct raws *t) {
   int i;
-  char *a, *b;
 
-  a = s->date;
-  b = t->date;
-  i = strcmp(a, b);
-
-  if (i != 0) { return i; }
+  if ( (i = strcmp(s->date, t->date)) !=0 ) { return i; }
   else {
-    a = s->time;
-    b = t->time;
-    return strcmp(a, b);
+    return strcmp(s->time, t->time);
   }
 }
 
