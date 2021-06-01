@@ -27,7 +27,7 @@ void main() {
   ii=1;
   while ( fgets (str, NMAX, stdin) != NULL) {
 
-    if (str[0] == '#') { strcpy(header, str); } // Detects the header that starts with '#'
+    if (str[0] == '#') strcpy(header, str); // Detects the header that starts with '#'
     else {
       c1 = sscanf(str, "%d.%d.%d (%d) %d:%d:%d %d %lf %lf %lf %s %s %lf %lf %lf %lf %lf",
         &tmp.yy, &tmp.mm, &tmp.dd, &tmp.ddd, &tmp.hh, &tmp.mn, &tmp.ss, &tmp.cscore,
@@ -41,12 +41,8 @@ void main() {
         }
       }
 
-      if (c1 < 18) {
-        printf("[Missing column] line %d: %s", ii, str);
-      }
-      else if (c2 == 0) {
-        printf("[Duplicate line] line %d: %s", ii, str);
-      }
+      if (c1 < 18) printf("[Missing column] line %d: %s", ii, str);
+      else if (c2 == 0) printf("[Duplicate line] line %d: %s", ii, str);
       else {
         line[i] = tmp;
         i++;
@@ -62,7 +58,7 @@ void main() {
   for(i=0; i<imax; i++) {
     tmp = line[i];
 
-    printf("%d.%2d.%2d (%3d) %2d:%2d:%2d %3d %.3f %.3f %.3f %s %s %.3f %.3f %.3f %.3f %.3f\n",
+    printf("%d.%02d.%02d (%03d) %02d:%02d:%02d %03d %.3f %.3f %.3f %s %s %.3f %.3f %.3f %.3f %.3f\n",
       tmp.yy, tmp.mm, tmp.dd, tmp.ddd, tmp.hh, tmp.mn, tmp.ss, tmp.cscore,
       tmp.fof2, tmp.fof1, tmp.foe, tmp.foes, tmp.hmes, tmp.hmf2, tmp.hmf1, tmp.hme, tmp.b0, tmp.b1);
   }
@@ -83,7 +79,7 @@ void main() {
   for (i=0; i<imax; i++) {
     tmp = line[i];
 
-    printf("%d.%2d.%2d (%3d) %2d:%2d:%2d %.3f %.3f\n",
+    printf("%d.%02d.%02d (%03d) %02d:%02d:%02d %.3f %.3f\n",
       tmp.yy, tmp.mm, tmp.dd, tmp.ddd, tmp.hh, tmp.mn, tmp.ss, f_fof2[i], f_hmf2[i]); // prints the date, time, foF2, hmF2
   }
 }
