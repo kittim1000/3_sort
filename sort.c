@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#define LMAX 100
-#define NMAX 200
+#define LMAX 100 // Maximum number of rows
+#define NMAX 200 // Maximum number of characters per row
 
-void medfilter(double *, int);
+void medfilter(double *, int); // Median Filter
 void swap (double*, double*);
 int compare_raws(const void *, const void *);
 
@@ -27,7 +27,7 @@ void main() {
   ii=1;
   while ( fgets (str, NMAX, stdin) != NULL) {
 
-    if (str[0] == '#') { strcpy(header, str); }
+    if (str[0] == '#') { strcpy(header, str); } // Detects the header that starts with '#'
     else {
       c1 = sscanf(str, "%d.%d.%d (%d) %d:%d:%d %d %lf %lf %lf %s %s %lf %lf %lf %lf %lf",
         &tmp.yy, &tmp.mm, &tmp.dd, &tmp.ddd, &tmp.hh, &tmp.mn, &tmp.ss, &tmp.cscore,
@@ -56,7 +56,7 @@ void main() {
   }
   imax = i;
 
-  qsort(line, imax, sizeof(struct raws), compare_raws);
+  qsort(line, imax, sizeof(struct raws), compare_raws); // sorts the rows, old to new
 
   printf("\n%s", header);
   for(i=0; i<imax; i++) {
@@ -84,7 +84,7 @@ void main() {
     tmp = line[i];
 
     printf("%d.%2d.%2d (%3d) %2d:%2d:%2d %.3f %.3f\n",
-      tmp.yy, tmp.mm, tmp.dd, tmp.ddd, tmp.hh, tmp.mn, tmp.ss, f_fof2[i], f_hmf2[i]);
+      tmp.yy, tmp.mm, tmp.dd, tmp.ddd, tmp.hh, tmp.mn, tmp.ss, f_fof2[i], f_hmf2[i]); // prints the date, time, foF2, hmF2
   }
 }
 
@@ -98,11 +98,12 @@ int compare_raws(const void *s0, const void *t0) {
   if ((i = (s->yy)-(t->yy)) != 0) { return i; }
   else {
     i = 86400*((s->ddd)-(t->ddd)) + 3600*((s->hh)-(t->hh)) + 60*((s->mn)-(t->mn)) + (s->ss)-(t->ss);
+        // if year is the same, compare the number of seconds since Jan 1 00:00
     return i;
   }
 }
 
-void medfilter(double v[], int n) {
+void medfilter(double v[], int n) { // Median Filter with window size 3
   int i;
   double temp[n], a, b, c;
 
