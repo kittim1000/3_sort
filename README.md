@@ -21,9 +21,11 @@ data.txt looks like this:
 2020.01.31 (031) 23:05:00      100 3.500 2.350 0.631    ---    --- 234.200 120.770 110.000 43.300 3.080
 ```
 
-Sorting is done with `qsort()`; Median-filtering is done for `foF2` and `hmF2` with window size 3.
+Sorting is done with `qsort()`; Header row that starts with '#' is detected.
 
 Rows with any missing data or duplication of any previous row are separated for inspection.
+
+Median-filtering is done for `foF2` and `hmF2` with window size 3.
 
 Result of 
 ```
